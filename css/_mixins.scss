@@ -1,0 +1,10 @@
+@import './vars';
+
+@mixin main-background(){
+    background-color: $navy-color;
+    color: $white-color;
+}
+
+@mixin main-padding(){
+    padding: 100px 250px 100px 250px; ;
+}

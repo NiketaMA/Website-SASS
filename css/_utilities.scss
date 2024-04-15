@@ -1,0 +1,50 @@
+// To set text-color to darker color
+@function set-text-color($color) {
+    @if(lightness($color) > 70) {
+        @return #333;
+    } @else{
+        @return #fff;
+    }
+}
+
+// Function to darken or lighten 
+@function darken-or-lighten($color){
+    @if(lightness($color) < 50%) {
+        @return lighten($color, 40%);
+    } @else {
+        @return darken($color, 40%);
+    }
+}
+
+
+// Loop 
+$themeColours: (
+    "navy1": $navy-color,
+    "white1": $white-color,
+    "navy2": $navy-color,
+    "white2":$white-color,
+    "yellow": $mustard-color,
+    "navy3": $navy-color,
+    "white3": $white-color,
+    "navy4": $navy-color,
+    "white4": $white-color,
+    "grey": $l-grey-color,
+    "navy5": $navy-color,
+);
+
+@for $i from 1 through length($themeColours) {
+    $key: nth(map-keys($themeColours), $i);
+    $color: map-get($themeColours, $key);
+
+    .content-#{$i} {
+        background-color: $color;
+    }
+    }
+
+// Pixels to Rem function
+
+$base-font-size: 16px;
+
+@function px-to-rem($pixels) {
+    @return $pixels / $base-font-size + 0rem;
+}
